@@ -4,6 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
+// Route Imports
 const authRoutes = require("./routes/Auth");
 const productRoutes = require("./routes/Product");
 const orderRoutes = require("./routes/Order");
@@ -14,23 +15,24 @@ const userRoutes = require("./routes/User");
 const addressRoutes = require("./routes/Address");
 const reviewRoutes = require("./routes/Review");
 const wishlistRoutes = require("./routes/Wishlist");
+
+// DB Connection
 const { connectToDB } = require("./database/db");
 
-// server init
+// Initialize Express App
 const server = express();
 
-// database connection
+// Connect to MongoDB
 connectToDB();
 
 // ===== ✅ CORS CONFIGURATION =====
 const allowedOrigins = [
   'https://e-commerce-n8w7.vercel.app', // your frontend on Vercel
-  'http://localhost:3000'               // local dev
+  'http://localhost:3000'               // local development
 ];
 
 server.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (e.g., curl, mobile apps)
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -43,12 +45,12 @@ server.use(cors({
 }));
 // ==================================
 
-// core middlewares
+// Core Middlewares
 server.use(express.json());
 server.use(cookieParser());
 server.use(morgan("tiny"));
 
-// route middleware
+// Routes
 server.use("/auth", authRoutes);
 server.use("/users", userRoutes);
 server.use("/products", productRoutes);
@@ -60,12 +62,13 @@ server.use("/address", addressRoutes);
 server.use("/reviews", reviewRoutes);
 server.use("/wishlist", wishlistRoutes);
 
-// default route
+// Root Route
 server.get("/", (req, res) => {
-  res.status(200).json({ message: "running" });
+  res.status(200).json({ message: "Server is running." });
 });
 
-// start server
-server.listen(8000, () => {
-  console.log("server [STARTED] ~ http://localhost:8000");
+// ===== ✅ Start Server on Dynamic Port =====
+const PORT = process.env.PORT || 8000;
+server.listen(PORT, () => {
+  console.log(`Server [STARTED] at http://localhost:${PORT}`);
 });
