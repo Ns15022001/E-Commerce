@@ -33,9 +33,9 @@ export const Footer = () => {
 
                 <Stack rowGap={'1rem'} padding={'1rem'}>
                     <Typography variant='h6'>Support</Typography>
-                    <Typography sx={labelStyles}>11th Main Street, Dhaka,  DH 1515, California.</Typography>
-                    <Typography sx={labelStyles}>exclusive@gmail.com</Typography>
-                    <Typography sx={labelStyles}>+88015-88888-9999</Typography>
+                    <Typography sx={labelStyles}>Divine Drap Private Limited, New Delhi</Typography>
+                    <Typography sx={labelStyles}>divine.drap20@gmail.com</Typography>
+                    <Typography sx={labelStyles}>8393828898</Typography>
                 </Stack>
 
                 <Stack rowGap={'1rem'} padding={'1rem'}>
@@ -57,7 +57,7 @@ export const Footer = () => {
 
                 <Stack rowGap={'1rem'} padding={'1rem'}>
                     <Typography  variant='h6'>Download App</Typography>
-                    <Typography sx={{...labelStyles,color:"graytext",fontWeight:500}}>Save $3 with App New User Only</Typography>
+                    <Typography sx={{...labelStyles,color:"graytext",fontWeight:500}}>Save ₹200 with App New User Only</Typography>
                     <Stack flexDirection={'row'} columnGap={'.5rem'}>
 
                         <Box width={'100px'} height={"100px"}>
@@ -88,7 +88,7 @@ export const Footer = () => {
 
             {/* lower */}
             <Stack alignSelf={"center"}>
-                <Typography color={'GrayText'}>&copy; Mern Store {new Date().getFullYear()}. All right reserved</Typography>
+                <Typography color={'GrayText'}>&copy; Divine Drap {new Date().getFullYear()}. All right reserved</Typography>
             </Stack>
 
     </Stack>
