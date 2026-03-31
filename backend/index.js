@@ -25,30 +25,21 @@ const server = express();
 // Connect to MongoDB
 connectToDB();
 
-// ===== ✅ CORS CONFIGURATION =====
-const allowedOrigins = [
-  'https://e-commerce-n8w7.vercel.app', // your frontend on Vercel
-  'http://localhost:3000'               // local development
-];
 
+// ✅🔥 FIXED CORS CONFIGURATION (IMPORTANT)
 server.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed for origin: " + origin));
-    }
-  },
+  origin: true, // allow all origins (fixes Vercel issue)
   credentials: true,
   exposedHeaders: ['X-Total-Count'],
   methods: ['GET', 'POST', 'PATCH', 'DELETE']
 }));
-// ==================================
+
 
 // Core Middlewares
 server.use(express.json());
 server.use(cookieParser());
 server.use(morgan("tiny"));
+
 
 // Routes
 server.use("/auth", authRoutes);
@@ -62,13 +53,15 @@ server.use("/address", addressRoutes);
 server.use("/reviews", reviewRoutes);
 server.use("/wishlist", wishlistRoutes);
 
+
 // Root Route
 server.get("/", (req, res) => {
   res.status(200).json({ message: "Server is running." });
 });
 
-// ===== ✅ Start Server on Dynamic Port =====
+
+// Start Server
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => {
-  console.log(`Server [STARTED] at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
