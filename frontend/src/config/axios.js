@@ -1,3 +1,10 @@
-import axios from 'axios'
+import axios from "axios";
 
-export const axiosi=axios.create({withCredentials:true,baseURL:process.env.REACT_APP_BASE_URL})
+const BASE_URL =
+  process.env.REACT_APP_BASE_URL ||
+  "https://mern-ecommerce-main-backend.onrender.com/";
+
+export const axiosi = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true,
+});
