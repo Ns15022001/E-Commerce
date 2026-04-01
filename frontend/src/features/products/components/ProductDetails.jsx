@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import { clearSelectedProduct, fetchProductByIdAsync, resetProductFetchStatus, selectProductFetchStatus, selectSelectedProduct } from '../ProductSlice'
+<<<<<<< HEAD
 import { Box, Checkbox, Rating, Stack, Typography, useMediaQuery, Button, Paper } from '@mui/material'
+=======
+import { Box, Checkbox, Rating, Stack, Typography, useMediaQuery } from '@mui/material'
+>>>>>>> 9fbc4c2b54cdffcb0f215a5c148d1d17581fe4db
 import { addToCartAsync, resetCartItemAddStatus, selectCartItemAddStatus, selectCartItems } from '../../cart/CartSlice'
 import { selectLoggedInUser } from '../../auth/AuthSlice'
 import { fetchReviewsByProductIdAsync, resetReviewFetchStatus, selectReviewFetchStatus, selectReviews } from '../../review/ReviewSlice'
